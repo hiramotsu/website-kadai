@@ -1,0 +1,744 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Noto Sans JP';
+}
+p {
+  font-family: "Noto Sans JP";
+}
+.opacity:hover {
+  opacity: 0.7;
+}
+.up:hover {
+  opacity: 0.7;
+  transform: translateY(-0.4em);
+}
+
+/*
+フェード表示
+InformationとGalleryの画像を下からふわっと表示させるためのクラス
+「transform: translate(0, 50%);」で下にさげた状態で、
+「opacity: 0;」で非表示にしておく
+*/
+.fadein {
+  opacity: 0;
+  transform: translate(0, 50%); /*translate「x軸,y軸方向の距離」を指定*/
+  transition: 2s; /*動きの早さ*/
+}
+/*
+fadeinクラスの要素が画面下にきたタイミングで、jQueryのinviewにてshowクラスを追加して
+「transform: translate(0, 0);」と「opacity: 1;」で表示させる
+※main.jsの「フェード表示」を参照
+*/
+.fadein.show {
+  transform: translate(0, 0); /*translate「x軸,y軸方向の距離」を指定*/
+  opacity: 1;
+}
+
+/* パソコンで見たときは"pc"のclassがついた画像が表示される */
+.sp { display: none !important; }
+
+
+
+//  header
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.7% 3% 1% 3%;
+  font-family: 'Noto Sans JP';
+}
+.logo {
+  width: 76%;
+  padding-top: 1%;
+}
+/* ナビゲーションのレイアウト */
+#nav-pc {
+  text-align: right;
+  font-size: 14px;
+  padding-top: 1%;
+}
+  /* ナビゲーションのリンクの装飾設定 */
+  #nav-pc > a {
+      text-decoration: none;
+      padding: 8px;
+  }
+  #nav-pc > a:link {
+      color: #468459;
+  }
+  #nav-pc > a:visited {
+      color: #468459;
+  }
+  #nav-pc > a:hover {
+    background-color: #468459;
+    color: #ffffff;
+    border-radius: 5%;
+    height: 50%;
+    width: 50%;
+  }
+  #nav-pc > a:active {
+      color: #468459;
+  }
+  /* スマホ用ナビを非表示 */
+  #nav-sp,
+  #menu-sp {
+      display: none;
+  }
+
+  .main {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    max-height: 24rem;
+    z-index: 1;
+    margin: 0 auto;
+    p {
+      position: absolute;
+      color: #468459;
+      z-index: 2;
+    }
+    &__title1 {
+      top: 39%;
+      left: 4%;
+      font-size: 32px;
+      font-weight: 500;
+    }
+    &__title2 {
+      top: 49%;
+      left: 4%;
+      font-size: 18px;
+      border-bottom: 1px #468459 dashed;
+    }
+    &__img {
+      width: 79%;
+      margin: 0 0 0 23%;
+      top: -250px;
+      height: 885px;
+      position: relative;
+      right: 0px;
+      object-fit: contain;
+      border-radius: 62% 0 0 62%;
+    }
+    &__top {
+      position: absolute;
+      width: 15%;
+      top: 27%;
+    }
+    &__top1 {
+      top: 0px;
+      left: 20%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      z-index: -1;
+    }
+  }
+  
+// home
+.home {
+  margin: 2% 9% 3% 9%;
+  font-family: "Noto Sans JP";
+  font-size: 14px;
+  &__a {
+    color: #0C4324;
+  }
+}
+.bold {
+  font-weight: 700;
+  font-size: 24px;
+  color: #468459;
+  letter-spacing: 1px;
+  line-height: 30px;
+}
+.green {
+  color: #468459;
+  letter-spacing: 1px;
+  line-height: 2em;
+  td {
+    color: #468459;
+    letter-spacing: 1px;
+    line-height: 2em;
+    border: solid 1px #DDDDDD;
+    text-align: center;
+    font-family: "Noto Sans JP";
+    font-size: 14px;
+  }
+}
+.link {
+  text-align: right;
+  font-size: 13px;
+  padding: 0.5% 1.5%;
+  border: 1px #000000 double;
+  border-radius: 5px;
+  font-family: "Noto Sans JP";
+  margin: 0.5%;
+}
+.background {
+  background-color: #468459;
+  color: #ffffff;
+  padding: 0px 12px 3px 12px;
+  border-radius: 5%;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.dark-green {
+  color: #0C4324;
+}
+
+// 記事一覧
+.Information {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4%;
+  table {
+    width: 70%;
+    padding-left: 5%;
+    margin: 0;
+  }
+  td {
+    letter-spacing: 1px;
+    text-align: justify;
+    font-family: "Noto Sans JP";
+    font-size: 18px;
+  }
+  img {
+    border-radius: 5%;
+    width: 92%;
+    margin-bottom: 11%;
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    color: #000000;
+    text-align: left;
+  }
+&__sidebar {
+  width: 20%;
+  padding: 10px;
+}
+&__p {
+    margin: 0px 23px 0 0;
+}
+}
+
+// サイドバー
+aside dt {
+  color: #0C4324;
+  font-weight: 700;
+  font-size: 24px;
+}
+dd {
+  font-size: 18px;
+}
+aside {
+  width: 110px;
+}
+
+// ページネーション
+.nav-links{
+  display: flex;
+  justify-content: center;
+a,span{
+  width: 24px;
+  height: 24px;
+  margin: 2px;
+  line-height: 22px;
+  text-align:center;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration:none;
+  color:#468459;
+}
+.current{
+  background:#468459;
+  color: #ffffff;
+}
+.dots{
+  background:none;
+}
+}
+
+// アクセス
+.access {
+  position: relative;
+  background-color: #f0f5e1;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  h2 {
+    text-align: center;
+    margin: 2% 0 5% 0;
+  }
+  &__box{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 0 4%;
+    column-gap: 30px;
+    height: 403px;
+  }
+  &__box1 {
+    width: 59vw;
+  }
+  &__img {
+    position: absolute;
+    top: -17%;
+    width: 100%;
+    left: 0%;
+    z-index: -2;
+  }
+  &__img0 {
+    position: absolute;
+    top: -19%;
+    width: 100%;
+    left: 0%;
+    z-index: -3;
+  }
+  &__img1 {
+    padding: 0 2%;
+    width: 5.5%;
+  }
+  &__img2 {
+    width: 100%;
+    object-fit: cover;
+  }
+  &__img3 {
+    position: absolute;
+    width: 5%;
+    right: 2%;
+    bottom: 18%;
+  }
+  &__a {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 2.3% 4%;
+    border-radius: 3px;
+    font-family: "Noto Sans JP";
+    background: #1B9240;
+    color: #ffffff;
+  }
+  &__p1 {
+    font-size: 16px;
+    line-height: 1.3em;
+  }
+}
+th {
+  border: solid 1px #ffffff;
+  text-align: center;
+  font-family: "Noto Sans JP";
+}
+table {
+  border-collapse: collapse;
+  margin: 5% 0 8% 0;
+  font-size: 1.2vw;
+  width: 100%;
+}
+tbody {
+  border-radius: 5%;
+}
+.white th {
+  color: #ffffff;
+  letter-spacing: 1px;
+  line-height: 2em;
+  background: #468459;
+  font-size: 14px;
+  font-weight: 700;
+  width: 108px;
+}
+.tr {
+  background: #ffffff;
+}
+.tr1 {
+  background: #F6F6F6;
+}
+
+
+// フッター
+footer{
+  background-image: url(../images/footer-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 159px;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  margin: 3% 0;
+  font-family: "Noto Sans JP";
+&__nav {
+  text-align: right;
+  font-size: 16px;
+  padding-top: 1%;
+}
+&__p {
+  background: #468459;
+  text-align: center;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 0.7%;
+  width: 100%;
+}
+}
+.logo1 {
+  width: 88%;
+  margin-top: 1.5%;
+}
+  /* ナビゲーションのリンクの装飾設定 */
+.footer__nav > a {
+    text-decoration: none;
+    padding: 8px;
+}
+.footer__nav > a:hover {
+  background-color: #468459;
+  color: #ffffff;
+  border-radius: 5%;
+  height: 50%;
+  width: 50%;
+  margin: 0 auto;
+}
+
+/*ハンバーガ―メニュー*/
+.hamburger {
+  display: none;
+  width: 57px;
+  height: 52px;
+  cursor: pointer; /*マウスポインターが要素の上にいるときに表示*/
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  border-bottom-left-radius: 8%;
+  /* 一番上にくるように設定 */
+  z-index: 999;
+}
+.hamburger span {
+  width: 18px;
+  height: 1.5px;
+  background-color: #468459;
+  position: absolute;
+  left: 22px;
+  transition: 0.5s ease-in-out;
+}
+.hamburger span:nth-child(1) {
+  top: 17px;
+}
+.hamburger span:nth-child(2) {
+  top: 23px;
+}
+.hamburger span:nth-child(3) {
+  top: 30px;
+}
+.hamburger.active span:nth-child(1) {
+  top: 29px;
+  left: 22px;
+  transform: rotate(-45deg); /*transform:rotate:回転させる*/
+}
+.hamburger.active span:nth-child(2),
+.hamburger.active span:nth-child(3){
+  top: 29px;
+  transform: rotate(45deg); /*transform:rotate:回転させる*/
+}
+.hamburger.active p {
+  content: "Close";
+}
+
+.menu-text {
+  text-align: center;
+}
+.menu_green {
+  background-color: #0C4324;
+  width: 256px;
+  border-radius: 4px;
+  color: #ffffff;
+  text-align: center;
+  margin-left: 10%;
+}
+
+#navi {
+  width: 100%;
+  background-color: #ffffff;
+  color: #4c4c4c;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: left;
+  transform: translateY(-100%);
+  transition: 0.6s;
+  /* ロゴ、ハンバーガーより下でAccessページの背景画像よりも上にくるよう設定 */
+  z-index: 30;
+img {
+  width: 60%;
+  top: 6px;
+  left: 10px;
+  position: absolute;
+}
+}
+
+#navi.active::before {
+  bottom: 0%;
+  height: 100vh;
+}
+
+#navi ul {
+  width: 100%;
+  padding: 19% 8% 24% 8%;
+}
+#navi ul li {
+  padding: 4% 0;
+}
+#navi ul li:hover {
+  color: #CF5B5F;
+}
+#navi ul li a {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+#navi ul li a span {
+  margin-left: 5%;
+  font-size: 3vw;
+  letter-spacing: 0.1em;
+}
+/*
+メニュー表示
+ハンバーガーメニューがクリックされた際に、jQueryで#naviにactiveクラスを追加して、
+メニューを上から下にスライドさせて表示する
+*/
+#navi.active {
+  transform: translateY(0%);
+}
+
+.bold2 {
+  font-weight: 700;
+  font-size: 24px;
+  color: #468459;
+  letter-spacing: 1px;
+  line-height: 30px;
+}
+
+@media (max-width: 1200px) {
+  .main__img {
+    width: 107%;
+  }
+  }
+
+@media (max-width: 900px) {
+.main__img {
+  width: 126%;
+}
+}
+
+@media (min-width: 769px) {
+  .pc1 { display: none !important; }
+}
+/* 横幅が768pxまでの場合 */
+@media (max-width: 768px) {
+  .pc { display: none !important; }
+  .sp { display: block !important; }
+
+
+  //  header
+  header {
+    top: 0%;
+    width: 93%;
+    &::before {
+      content: '';
+      background-color: rgba(0, 0, 0, 0.8);
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 100%;
+      z-index: 10;
+      transition: 0.5s;
+    }
+  
+    &.active {
+      &::before {
+        bottom: 0;
+      }
+    }
+  }
+  
+  // main
+  .logo {
+    width: 100%;
+    padding-top: 1%;
+  }
+  .main {
+    width: 100%;
+    height: 495px !important;
+    max-height: 495px;
+  }
+  .main__img {
+    width: 91%;
+    margin: 0 0 0 23%;
+    top: 0;
+    height: auto;
+    right: 55px;
+    border-radius: 0 0 0 88%;
+}
+.main__top {
+  width: 30%;
+  top: 72%;
+}
+.main__top1 {
+  left: 3%;
+  height: 74%;
+}
+.main__title1 {
+  top: 76%;
+  left: 5%;
+  font-size: 28px;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+.main__title2 {
+  top: 84%;
+  left: 5%;
+  font-size: 16px;
+  font-weight: 400;
+}
+.home {
+  margin: 0% 4% 6% 4%;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+
+// Information
+.Information {
+  width: 100%;
+  flex-direction: column;
+}
+.Information img {
+  width: 100%;
+  margin: 9% 0 5% 0;
+}
+.Information table {
+  width: 100%;
+  padding-left: 0;
+}
+.Information td {
+  line-height: 1.2em;
+  font-weight: 700;
+}
+.Information__title {
+  font-size: 18px;
+}
+.nav-links span {
+  margin: 0 auto;
+  font-size: 16px;
+  display: inline-block;
+}
+.nav-links.sp {
+  text-align: center;
+  padding: 9%;
+}
+
+aside dt {
+  font-size: 18px;
+  padding: 3% 0;
+}
+
+// access
+a.opacity {
+  font-size: 14px;
+  color: #0C4324;
+}
+.bold4 {
+  font-size: 18px;
+  color: #468459;
+  font-weight: 700;
+  text-align: left;
+}
+.map {
+  width: 100%;
+}
+.access__img {
+  top: -2%;
+}
+.access__img0 {
+  top: -4%;
+}
+.access__img1 {
+  padding: 1% 2%;
+  width: 7.5%;
+}
+.access__box {
+  flex-direction: column;
+  height: 100%;
+  row-gap: 50px;
+}
+.access__box1 {
+  width: 100%;
+}
+.access__p1 {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+}
+.access h2 {
+  font-size: 18px;
+}
+.white th {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 2.5em;
+}
+td {
+  line-height: 2.5em;
+  font-size: 10px;
+  font-weight: 500;
+}
+.access__a {
+  color: #ffffff !important;
+  font-weight: 700;
+  padding: 4% 11%;
+}
+table {
+  margin: 10% 0;
+}
+
+// footer
+footer {
+  padding-top: 96px;
+  background-position: 80%;
+  text-align: center;
+}
+.footer {
+  margin: 4% 0;
+  flex-direction: column;
+}
+.footer__nav {
+  row-gap: 29px;
+  margin: 8% 0;
+  flex-direction: column;
+  display: flex;
+  text-align: center;
+  font-size: 16px;
+}
+.logo1 {
+    width: 75%;
+    padding-top: 15%;
+}
+.access__img3 {
+  width: 16%;
+  right: 5%;
+  bottom: 6%;
+}
+.footer__p {
+  padding: 3%;
+}
+}
